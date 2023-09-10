@@ -15,3 +15,7 @@ Comment
     blogpost_id
     user_id
 */
+
+const User = require('./User')
+
+module.exports = {User}
