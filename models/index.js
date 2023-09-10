@@ -1,13 +1,7 @@
 // models??
 
 /*
-Blogpost
-    title
-    content
-    comment_number
-    user_id (connects to user)
 Comment
-    username
     content
     blogpost_id
     user_id
@@ -15,5 +9,11 @@ Comment
 
 const User = require('./User')
 const Blogpost = require('./Blogpost')
+const Comment = require('./Comment')
 
-module.exports = {User, Blogpost}
+//associations:
+//one user has many blogposts; each blogpost belongs to one user
+//one user has many comments; each comment belongs to one user
+//one blogpost has many comments; each comment belongs to one blogpost
+
+module.exports = {User, Blogpost, Comment}
