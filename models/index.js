@@ -1,9 +1,6 @@
 // models??
 
 /*
-User (duh)
-    username
-    password (encrypted)
 Blogpost
     title
     content
@@ -17,5 +14,6 @@ Comment
 */
 
 const User = require('./User')
+const Blogpost = require('./Blogpost')
 
-module.exports = {User}
+module.exports = {User, Blogpost}

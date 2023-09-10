@@ -1,0 +1,14 @@
+[
+    {
+        "title":"The Importance of module.export",
+        "content": "I spent an hour debugging a simple issue, that is, that I forgot to export a model. The errors I got were vague, and when I sought internet help, I had more questions than answers! Thus, before you write out the details of a class, or a helper file, or a method that will be exported, I would recommend writing out the export statement first so you don't forget it!",
+        "comment_number": 0,
+        "user_id": 1
+    },
+    {
+        "title":"Sequelize Versus SQL",
+        "content": "When one first learns SQL they can find it difficult and clunky to incorporate with their web apps. Fortunately, there exists a node package called sequelize, which has the goal of making use of SQL in a friendlier way. It uses Object-Relational Mapping (ORM) to have models, which can be easier to use. This is just one of the many benefits of sequelize!",
+        "comment_number": 5,
+        "user_id": 2
+    }
+]
