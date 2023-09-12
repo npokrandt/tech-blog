@@ -1,3 +1,10 @@
-<h2>This is inside the body of Handlebars!</h2>
+<h3 class="px-3 pt-2">Check out these posts:</h3>
 
+{{!-- add in all blog posts - somehow! --}}
+
+{{#each blogposts}}
+    <a href="#" class="blog-link"><div class="card mx-2 my-2 px-2">
+        <h4>{{this.title}}</h4>
+    </div></a>
+{{/each}}
 <script src="/js/homepage.js"></script>

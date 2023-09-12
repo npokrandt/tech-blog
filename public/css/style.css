@@ -1,3 +1,32 @@
 body {
     background-color: lightgreen;
 }
+
+header {
+    color: white;
+    background-color: brown;
+}
+
+header a {
+    font-size: 20px;
+    color: white;
+    text-decoration: underline;
+    margin: 15px;
+}
+
+.blog-link {
+    color: black;
+}
+
+.blog-link:hover{
+    color: black;
+    text-decoration: none;  
+}
+
+.card {
+    background-color: beige;
+}
+
+.card:hover {
+    background-color: rgb(211, 211, 132);
+}
