@@ -1,17 +1,16 @@
 console.log('nice mustache')
 
-//What can I get done in time?
 // GIVEN a CMS-style blog site
 // WHEN I visit the site for the first time
-// THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in - partially complete
+// THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in - done
 // WHEN I click on the homepage option
-// THEN I am taken to the homepage - not yet finished
+// THEN I am taken to the homepage - mostly done
 // WHEN I click on any other links in the navigation
-// THEN I am prompted to either sign up or sign in - not started
+// THEN I am prompted to either sign up or sign in - done
 // WHEN I choose to sign up 
-// THEN I am prompted to create a username and password - not started
+// THEN I am prompted to create a username and password - done
 // WHEN I click on the sign-up button
-// THEN my user credentials are saved and I am logged into the site - not started
+// THEN my user credentials are saved and I am logged into the site - in progress
 // WHEN I revisit the site at a later time and choose to sign in
 // THEN I am prompted to enter my username and password - not started
 // WHEN I am signed in to the site

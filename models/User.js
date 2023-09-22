@@ -5,6 +5,7 @@ const saltRounds = 10
 
 class User extends Model {
     checkPassword(loginPw) {
+        //console.log(loginPw, this.password)
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
@@ -19,7 +20,8 @@ User.init(
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         password: {
             type: DataTypes.STRING,
