@@ -8,10 +8,11 @@ router.get('/', async (req, res) => {
 
     const blogposts = await Blogpost.findAll({raw: true})
 
-    try {
+    try { 
  
         res.render('homepage', {
-            blogposts
+            blogposts,
+            logged_in: req.session.logged_in,
         })
     } catch (err) {
         res.status(500).json(err);
