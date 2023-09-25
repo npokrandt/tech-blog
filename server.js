@@ -15,7 +15,7 @@ const PORT = process.env.PORT || '3001'
 const hbs = exphbs.create()
 
 const sess = {
-    secret: process.env.SECRET,
+    secret: 'the most secret secret',
     cookie: {},
     resave: false,
     saveUninitialized: true,
