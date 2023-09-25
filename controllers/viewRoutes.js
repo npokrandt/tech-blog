@@ -1,12 +1,20 @@
-const { Blogpost } = require('../models');
+const { Blogpost, User } = require('../models');
 
 const router = require('express').Router()
-// const {User} = require('../models')
 
 //homepage
 router.get('/', async (req, res) => {
 
-    const blogposts = await Blogpost.findAll({raw: true})
+    const blogpostData = await Blogpost.findAll({
+        include: User
+    })
+
+    const blogposts = blogpostData.map(blogpost => blogpost.get({ plain: true }))
+
+    for (blogpost in blogposts){
+        const post = blogposts[blogpost]
+        console.log(post.updatedAt)
+    }
 
     try { 
  
