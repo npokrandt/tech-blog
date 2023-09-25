@@ -1,6 +1,27 @@
 const router = require('express').Router()
 const { User } = require('../../models')
 
+router.post('/create-user', async (req, res) => {
+
+  const {username, password} = req.body
+
+  if (!username || !password){
+    return res.status(400).json('you need a username and a password to create an account')
+  }
+  try {
+
+    const newUser = await User.create({
+      username,
+      password
+    })
+
+    res.status(201).json(newUser)
+    
+  } catch (err) {
+    res.status(400).json(err);
+}
+})
+
 router.post('/login', async (req, res) => {
     //console.log(req.body.username)
 
