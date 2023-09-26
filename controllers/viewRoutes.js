@@ -61,6 +61,16 @@ router.get('/dashboard', async (req, res) => {
     }
 })
 
+router.get('/write-blogpost', async (req, res) => {
+    try {
+        res.render('write-blogpost', {
+            logged_in: req.session.logged_in,
+        })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 //login
 router.get('/login', async (req, res) => {
 
