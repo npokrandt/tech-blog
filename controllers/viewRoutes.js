@@ -1,4 +1,5 @@
 const { Blogpost, User } = require('../models');
+const dayjs = require('dayjs')
 
 const router = require('express').Router()
 
@@ -6,18 +7,22 @@ const router = require('express').Router()
 router.get('/', async (req, res) => {
 
     const blogpostData = await Blogpost.findAll({
-        include: User
+        include: User,
     })
 
+    
     const blogposts = blogpostData.map(blogpost => blogpost.get({ plain: true }))
+    console.log(blogposts)
 
     for (blogpost in blogposts){
         const post = blogposts[blogpost]
-        console.log(post.updatedAt)
+        const newDate = new dayjs(post.updatedAt).format('MMMM DD, YYYY')
+        post.formatted_date = newDate
     }
 
+    console.log(blogposts)
+
     try { 
- 
         res.render('homepage', {
             blogposts,
             logged_in: req.session.logged_in,
