@@ -21,7 +21,8 @@ Blogpost.init(
         },
         comment_number: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         user_id: {
             type: DataTypes.INTEGER,
