@@ -3,9 +3,16 @@ const { Blogpost } = require('../../models')
 
 router.post('/add-blogpost', async (req, res) => {
 
-    //console.log(req.body)
+    const {title, content} = req.body
+    const user_id = req.session.user_id
     try {
-        //we have the title and content, now we just need the user id
+        const newBlogpost = await Blogpost.create({
+            title,
+            content,
+            user_id
+        })
+
+        res.status(201).json(newBlogpost)
 
         res.end()
     } catch (err) {
