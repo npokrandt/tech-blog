@@ -5,9 +5,14 @@ router.post('/add-blogpost', async (req, res) => {
 
     const {title, content} = req.body
     const user_id = req.session.user_id
+    let slug = title.split(' ').join('-').toLowerCase()
+    slug = slug + '-' + user_id
+
+    console.log(slug)
     try {
         const newBlogpost = await Blogpost.create({
             title,
+            slug,
             content,
             user_id
         })

@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
         res.render('homepage', {
             blogposts,
             logged_in: req.session.logged_in,
-        })
+        }) 
     } catch (err) {
         res.status(500).json(err);
     }
@@ -54,6 +54,32 @@ router.get('/dashboard', async (req, res) => {
     try {
         res.render('dashboard', {
             blogposts,
+            logged_in: req.session.logged_in,
+        })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.get('/blogpost/:slug', async (req, res) => {
+    try {
+        const blogpostData = await Blogpost.findOne({
+            where: {
+                slug: req.params.slug
+            },
+            include: User,
+        })
+
+        const blogpost = blogpostData.get({plain: true})
+
+        const newDate = new dayjs(blogpost.updatedAt).format('MMMM DD, YYYY')
+        blogpost.formatted_date = newDate
+
+        console.log(blogpost)
+
+        //get the post by its slug and username
+        res.render('blogpost', {
+            blogpost,
             logged_in: req.session.logged_in,
         })
     } catch (err) {

@@ -1,0 +1,16 @@
+{{!-- 
+Title up top
+Author and date together below
+Content
+Button to add new comment
+Comment partial below 
+use slug to differentiate the blogposts--}}
+
+<div class="card blog-card m-2 p-2">
+    <h3 class="pb-2 text-center">{{blogpost.title}}</h3>
+    <h6 class="pb-2 text-center">by {{blogpost.user.username}}, updated {{blogpost.formatted_date}}</h6>
+    <p>{{blogpost.content}}</p>
+    <h6>Comments:</h6>
+</div>
+
+{{!-- <script src="/js/get-post.js"></script> --}}
