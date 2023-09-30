@@ -1,4 +1,4 @@
-const { Blogpost, User } = require('../models');
+const { Blogpost, User, Comment } = require('../models');
 const dayjs = require('dayjs')
 
 const router = require('express').Router()
@@ -67,19 +67,29 @@ router.get('/blogpost/:slug', async (req, res) => {
             where: {
                 slug: req.params.slug
             },
-            include: User,
+            include: User       
         })
 
         const blogpost = blogpostData.get({plain: true})
 
+        const commentData = await Comment.findAll({
+            where: {
+                blogpost_id: blogpost.id
+            },
+            include: User
+        })
+
+        
+        const comments = commentData.map(comment => comment.get({ plain: true }))
+
+        console.log(comments)
+
         const newDate = new dayjs(blogpost.updatedAt).format('MMMM DD, YYYY')
         blogpost.formatted_date = newDate
 
-        console.log(blogpost)
-
-        //get the post by its slug and username
         res.render('blogpost', {
             blogpost,
+            comments,
             logged_in: req.session.logged_in,
         })
     } catch (err) {

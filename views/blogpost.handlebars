@@ -11,6 +11,7 @@ use slug to differentiate the blogposts--}}
     <h6 class="pb-2 text-center">by {{blogpost.user.username}}, updated {{blogpost.formatted_date}}</h6>
     <p>{{blogpost.content}}</p>
     <h6>Comments:</h6>
+    {{>comments}}
 </div>
 
 {{!-- <script src="/js/get-post.js"></script> --}}
