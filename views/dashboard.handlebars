@@ -1,5 +1,9 @@
 <h3 class="px-3">Your Blogposts:</h3>
 
+{{#if noPosts}}
+<p class="text-center no-post-message">No posts yet! Why don't you post something?</p>
+{{/if}}
+
 {{>blogpost-list}}
 
 <div class="text-left px-3 pt-2">

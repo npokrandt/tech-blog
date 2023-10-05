@@ -40,6 +40,11 @@ label, input, textarea{
     font-size: 18px
 }
 
+.comment-label{
+    font-weight: bold;
+    font-size: 22px;
+}
+
 .homepage-card {
     background-color: beige;
 }
@@ -52,6 +57,10 @@ label, input, textarea{
     text-decoration: underline; 
 }
 
+.no-post-message{
+    font-size: 30px;
+    padding: 70px 0;
+}
 .submit-btn{
     font-size: 20px;
 }

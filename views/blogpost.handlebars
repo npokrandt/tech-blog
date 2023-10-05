@@ -10,7 +10,7 @@ use slug to differentiate the blogposts--}}
     <h3 class="pb-2 text-center">{{blogpost.title}}</h3>
     <h6 class="pb-2 text-center">by {{blogpost.user.username}}, updated {{blogpost.formatted_date}}</h6>
     <p>{{blogpost.content}}</p>
-    <h6>Comments:</h6>
+    <p class="mt-5 pt-5 comment-label">Comments:</p>
     {{>comments}}
 </div>
 

@@ -35,6 +35,7 @@ router.get('/', async (req, res) => {
 //dashboard
 router.get('/dashboard', async (req, res) => {
 
+    let noPosts = false
     const blogpostData = await Blogpost.findAll({
         where: {
             user_id: req.session.user_id
@@ -51,9 +52,14 @@ router.get('/dashboard', async (req, res) => {
         post.formatted_date = newDate
     }
 
+    if (blogposts.length === 0){
+        noPosts = true
+    }
+
     try {
         res.render('dashboard', {
             blogposts,
+            noPosts,
             logged_in: req.session.logged_in,
         })
     } catch (err) {

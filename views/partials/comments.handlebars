@@ -1,3 +1,6 @@
+{{#if logged_in}}
+<button type="button" class="p-2 mb-3">Add Comment</button>
+{{/if}}
 {{#each comments as |comment|}}
     <div class="card comment-card px-2">
         <p class="mt-2">{{comment.content}}</p>
