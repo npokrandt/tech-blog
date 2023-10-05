@@ -1,5 +1,10 @@
 {{#if logged_in}}
-<button type="button" class="p-2 mb-3">Add Comment</button>
+<button type="button" class="p-2 mb-3 add-comment">Add Comment</button>
+<form style="display: none">
+    <label for="newComment">Write Comment Below:</label>
+    <textarea name="newComment" required></textarea>
+    <button type="submit" class="p-2 mb-3">Submit Comment</button>
+</form>
 {{/if}}
 {{#each comments as |comment|}}
     <div class="card comment-card px-2">
