@@ -9,6 +9,9 @@
 {{#each comments as |comment|}}
     <div class="card comment-card px-2">
         <p class="mt-2">{{comment.content}}</p>
-        <p class="comment-text">{{comment.user.username}}</p>
+        <div class="display-flex justify-space-between">
+            <p class="comment-text">{{comment.user.username}}</p>
+            <p>{{comment.formatted_date}}</p>
+        </div>
     </div>
 {{/each}}

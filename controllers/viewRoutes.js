@@ -89,6 +89,11 @@ router.get('/blogpost/:slug', async (req, res) => {
         const comments = commentData.map(comment => comment.get({ plain: true }))
 
         //console.log(comments)
+        for (comment in comments){
+            const commentActual = comments[comment]
+            const newDate = new dayjs(commentActual.updatedAt).format('MM/DD/YYYY')
+            commentActual.formatted_date = newDate
+        }
 
         const newDate = new dayjs(blogpost.updatedAt).format('MMMM DD, YYYY')
         blogpost.formatted_date = newDate
