@@ -82,7 +82,8 @@ router.get('/blogpost/:slug', async (req, res) => {
             where: {
                 blogpost_id: blogpost.id
             },
-            include: User
+            include: User,
+            order: [['updatedAt', 'DESC']]
         })
 
         

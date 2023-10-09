@@ -1,6 +1,16 @@
 [
     {
-        "content":"but aren't sequelize and SQL the same thing??",
+        "content":"Well put, Stan!",
+        "blogpost_id": 2,
+        "user_id": 1
+    },
+    {
+        "content":"AAAAAGH WHY SI CODING SO HARD!!!!???!!?",
+        "blogpost_id": 2,
+        "user_id": 3
+    },
+    {
+        "content":"I DON'T AGREE WITH YOU!! YOU ARE AN IDIOT!! ONLY IDIOTS THINK THE WAY YOU DO!!",
         "blogpost_id": 2,
         "user_id": 3
     },
@@ -10,18 +20,9 @@
         "user_id": 2
     },
     {
-        "content":"I DON'T AGREE WITH YOU!! YOU ARE AN IDIOT!! ONLY IDIOTS THINK THE WAY YOU DO!!",
-        "blogpost_id": 2,
-        "user_id": 3
-    },
-    {
-        "content":"Well put, Stan!",
-        "blogpost_id": 2,
-        "user_id": 1
-    },
-    {
-        "content":"AAAAAGH WHY SI CODING SO HARD!!!!???!!?",
+        "content":"but aren't sequelize and SQL the same thing??",
         "blogpost_id": 2,
         "user_id": 3
     }
+    
 ]
