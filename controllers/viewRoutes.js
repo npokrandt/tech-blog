@@ -99,9 +99,15 @@ router.get('/blogpost/:slug', async (req, res) => {
         const newDate = new dayjs(blogpost.updatedAt).format('MMMM DD, YYYY')
         blogpost.formatted_date = newDate
 
+        let is_author = false
+        if (blogpost.user.id === req.session.user_id){
+            is_author = true
+        }
+
         res.render('blogpost', {
             blogpost,
             comments,
+            is_author,
             logged_in: req.session.logged_in,
         })
     } catch (err) {

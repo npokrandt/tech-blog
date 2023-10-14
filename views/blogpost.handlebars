@@ -1,11 +1,3 @@
-{{!-- 
-Title up top
-Author and date together below
-Content
-Button to add new comment
-Comment partial below 
-use slug to differentiate the blogposts--}}
-
 <div class="card blog-card m-2 p-2">
     <h3 class="pb-2 text-center">{{blogpost.title}}</h3>
     <h6 class="pb-2 text-center">by {{blogpost.user.username}}, updated {{blogpost.formatted_date}}</h6>
@@ -13,5 +5,12 @@ use slug to differentiate the blogposts--}}
     <p class="mt-5 pt-5 comment-label">Comments:</p>
     {{>comments}}
 </div>
+
+{{#if is_author}}
+    <div class="mx-2 mb-2">
+        <button id="edit_post" class="p-1">Edit Post</button>
+        <button id="delete_post" class="p-1">Delete Post</button>
+    </div>
+{{/if}}
 
 <script src="/js/add-comment.js"></script>
