@@ -1,11 +1,11 @@
 const form = document.querySelector('form')
 const addCommentBtn = document.querySelector('.add-comment')
 //these grab the slug components to be used to grab the blog id for new comments
-const slugPartOneEl = document.querySelector('h3').innerText
-const slugPartTwoEl = document.querySelector('h6').innerText
+// const slugPartOneEl = document.querySelector('h3').innerText
+// const slugPartTwoEl = document.querySelector('h6').innerText
 
-const slugPartOne = slugPartOneEl.split(' ').join('-').toLowerCase()
-const slugPartTwo = slugPartTwoEl.substring(3, slugPartTwoEl.search(/,/))
+// const slugPartOne = slugPartOneEl.split(' ').join('-').toLowerCase()
+// const slugPartTwo = slugPartTwoEl.substring(3, slugPartTwoEl.search(/,/))
 
 const slug = {slugPartOne, slugPartTwo}
 const showAddCommentForm = () => {
