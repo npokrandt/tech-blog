@@ -1,6 +1,8 @@
 const { Blogpost, User, Comment } = require('../models');
 const dayjs = require('dayjs')
 
+const getPageInfo = require('../utils/getPageInfo')
+
 const router = require('express').Router()
 
 //homepage
@@ -116,9 +118,44 @@ router.get('/blogpost/:slug', async (req, res) => {
 })
 
 router.get('/write-blogpost', async (req, res) => {
+    
+    const editMode = false
+
+    const contents = {}
+    const text = getPageInfo(editMode, contents)
     try {
         res.render('write-blogpost', {
             logged_in: req.session.logged_in,
+            text
+        })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.get('/edit-blogpost/:slug', async (req, res) => {
+
+    const editMode = true
+
+    const fullslug = req.params.slug + '-' + req.session.user_id
+    console.log(fullslug)
+
+    const blogToEdit = await Blogpost.findOne({
+        where: {
+            slug: fullslug
+        },
+    })
+
+    const contents = {
+        title: blogToEdit.title,
+        content: blogToEdit.content
+    }
+
+    const text = getPageInfo(editMode, contents)
+    try {
+        res.render('write-blogpost', {
+            logged_in: req.session.logged_in,
+            text
         })
     } catch (err) {
         res.status(500).json(err);

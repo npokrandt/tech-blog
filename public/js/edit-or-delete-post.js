@@ -13,8 +13,7 @@ const slugPartTwo = slugPartTwoEl.substring(3, slugPartTwoEl.search(/,/))
 const postToDeleteSlug = {slugPartOne, slugPartTwo}
 
 const editPost = () => {
-    console.log('editing...')
-    //edit just takes them to the same page as earlier, but with the text bars filled in
+    document.location.replace(`/edit-blogpost/${slugPartOne}`)
 }
 
 const deletePost = () => {
@@ -40,7 +39,6 @@ const deletePost = () => {
             }
         })
     }
-    //delete is easy - just delete the post in question and maybe its comments
 }
 
 editPostEl.addEventListener('click', editPost)

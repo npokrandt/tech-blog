@@ -1,12 +1,13 @@
-<h3 class="px-2 pt-2">Write a new post below!</h3>
+<h3 class="px-2 pt-2">{{text.headerText}}</h3>
+
 <form class="px-2">
-    <label for="title">Add a title for your blogpost</label>
-    <input type="text" name="title" required>
+    <label for="title">{{text.titleLabelText}}</label>
+    <input required type="text" name="title" value="{{text.titleInputValue}}">
 
-    <label for="content">Add the content of your blogpost</label>
-    <textarea name="content" required></textarea>
+    <label for="content">{{text.contentLabelText}}</label>
+    <textarea required name="content">{{text.contentTextareaValue}}</textarea>
 
-    <button class='mt-3 p-1' type="submit">Add Post</button>
+    <button class='mt-3 p-1' type="submit">{{text.buttonText}}</button>
 </form>
 
 <script src="/js/add-post.js"></script>
