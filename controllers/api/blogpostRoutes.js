@@ -8,7 +8,6 @@ router.post('/add-blogpost', async (req, res) => {
     let slug = title.split(' ').join('-').toLowerCase()
     slug = slug + '-' + user_id
 
-    console.log(slug)
     try {
         const newBlogpost = await Blogpost.create({
             title,
@@ -31,8 +30,6 @@ router.put('/edit-blogpost', async (req, res) => {
     let slug = title.split(' ').join('-').toLowerCase()
     oldSlug = oldSlug + '-' + user_id
     slug = slug + '-' + user_id
-    
-    console.log(title, content, slug, oldSlug)
     
     try {
         const editedBlogpost = await Blogpost.update(
@@ -69,9 +66,6 @@ router.delete('/delete-blogpost', async (req, res) => {
 
         const fullslug = slug.slugPartOne + '-' + author_id.id
 
-        console.log(fullslug)
-
-        //get blog_id to delete the comments too
         const post = await Blogpost.findOne({
             where: {
                 slug: fullslug

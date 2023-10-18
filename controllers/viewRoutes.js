@@ -14,15 +14,12 @@ router.get('/', async (req, res) => {
 
     
     const blogposts = blogpostData.map(blogpost => blogpost.get({ plain: true }))
-    console.log(blogposts)
 
-    for (blogpost in blogposts){
+    for (const blogpost in blogposts){
         const post = blogposts[blogpost]
         const newDate = new dayjs(post.updatedAt).format('MMMM DD, YYYY')
         post.formatted_date = newDate
     }
-
-    console.log(blogposts)
 
     try { 
         res.render('homepage', {
@@ -46,9 +43,8 @@ router.get('/dashboard', async (req, res) => {
     })
 
     const blogposts = blogpostData.map(blogpost => blogpost.get({ plain: true }))
-    //console.log(blogposts)
 
-    for (blogpost in blogposts){
+    for (const blogpost in blogposts){
         const post = blogposts[blogpost]
         const newDate = new dayjs(post.updatedAt).format('MMMM DD, YYYY')
         post.formatted_date = newDate
@@ -91,8 +87,7 @@ router.get('/blogpost/:slug', async (req, res) => {
         
         const comments = commentData.map(comment => comment.get({ plain: true }))
 
-        //console.log(comments)
-        for (comment in comments){
+        for (const comment in comments){
             const commentActual = comments[comment]
             const newDate = new dayjs(commentActual.updatedAt).format('MM/DD/YYYY')
             commentActual.formatted_date = newDate
@@ -117,14 +112,14 @@ router.get('/blogpost/:slug', async (req, res) => {
     }
 })
 
-router.get('/write-blogpost', async (req, res) => {
+router.get('/write-or-edit-blogpost', async (req, res) => {
     
     const editMode = false
 
     const contents = {}
     const text = getPageInfo(editMode, contents)
     try {
-        res.render('write-blogpost', {
+        res.render('write-or-edit-blogpost', {
             logged_in: req.session.logged_in,
             text
         })
@@ -133,12 +128,11 @@ router.get('/write-blogpost', async (req, res) => {
     }
 })
 
-router.get('/edit-blogpost/:slug', async (req, res) => {
+router.get('/write-or-edit-blogpost/:slug', async (req, res) => {
 
     const editMode = true
 
     const fullslug = req.params.slug + '-' + req.session.user_id
-    console.log(fullslug)
 
     const blogToEdit = await Blogpost.findOne({
         where: {
@@ -153,7 +147,7 @@ router.get('/edit-blogpost/:slug', async (req, res) => {
 
     const text = getPageInfo(editMode, contents)
     try {
-        res.render('write-blogpost', {
+        res.render('write-or-edit-blogpost', {
             logged_in: req.session.logged_in,
             text
         })
@@ -165,8 +159,6 @@ router.get('/edit-blogpost/:slug', async (req, res) => {
 //login
 router.get('/login', async (req, res) => {
 
-    //const blogposts = await Blogpost.findAll({raw: true})
-
     try {
  
         res.render('login')
@@ -176,8 +168,6 @@ router.get('/login', async (req, res) => {
 })
 
 router.get('/create-account', async (req, res) => {
-
-    //const blogposts = await Blogpost.findAll({raw: true})
 
     try {
  

@@ -28,7 +28,6 @@ const addNewPost = event => {
             if (response.ok){
                 document.location.replace('/dashboard');
             } else {
-                console.log(response)
                 alert('Blogpost edit unsuccessful')
             }
         }) 

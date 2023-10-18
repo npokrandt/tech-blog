@@ -23,7 +23,6 @@ router.post('/create-user', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    //console.log(req.body.username)
 
     try {
         const userData = await User.findOne({ where: { username: req.body.username } });
@@ -35,7 +34,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const validPassword = await userData.checkPassword(req.body.password)
+        const validPassword = userData.checkPassword(req.body.password)
 
         if (!validPassword) {
             res

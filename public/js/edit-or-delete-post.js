@@ -13,14 +13,12 @@ const slugPartTwo = slugPartTwoEl.substring(3, slugPartTwoEl.search(/,/))
 const postToDeleteSlug = {slugPartOne, slugPartTwo}
 
 const editPost = () => {
-    document.location.replace(`/edit-blogpost/${slugPartOne}`)
+    document.location.replace(`/write-or-edit-blogpost/${slugPartOne}`)
 }
 
 const deletePost = () => {
 
     const verification = confirm('Are you sure you want to delete this post?')
-
-    console.log(verification)
 
     if (verification){
         fetch('../api/blogpostRoutes/delete-blogpost', {

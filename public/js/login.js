@@ -1,7 +1,5 @@
 const form = document.querySelector('form')
 
-//console.log(form)
-
 const handleLoginEvent = event => {
     event.preventDefault()
 
@@ -12,8 +10,6 @@ const handleLoginEvent = event => {
         username,
         password
     }
-
-    //console.log(user)
 
     fetch('api/userRoutes/login', {
         method: 'POST',

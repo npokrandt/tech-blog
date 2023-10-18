@@ -7,8 +7,7 @@ const logout = async() => {
     if (response.ok) {
         document.location.replace('/login');
       } else {
-        console.log(response)
-        //alert(response);
+        alert(response);
       }
 }
 

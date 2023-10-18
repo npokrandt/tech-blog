@@ -1,12 +1,7 @@
 const form = document.querySelector('form')
 const addCommentBtn = document.querySelector('.add-comment')
-//these grab the slug components to be used to grab the blog id for new comments
-// const slugPartOneEl = document.querySelector('h3').innerText
-// const slugPartTwoEl = document.querySelector('h6').innerText
 
-// const slugPartOne = slugPartOneEl.split(' ').join('-').toLowerCase()
-// const slugPartTwo = slugPartTwoEl.substring(3, slugPartTwoEl.search(/,/))
-
+//the slug parts were intialized in a different js file on this view
 const slug = {slugPartOne, slugPartTwo}
 const showAddCommentForm = () => {
     form.style.display = 'block'
@@ -38,7 +33,6 @@ const submitComment = event =>{
         }
     })
     .catch(err => console.log(err))
-    //send the comment content to be added, along with the user and post ids
 }
 
 addCommentBtn.addEventListener('click', showAddCommentForm)

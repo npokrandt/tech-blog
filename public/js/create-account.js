@@ -36,7 +36,6 @@ const handleCreateUserEvent = event => {
             .then(response => {
                 if (response.ok){
                     document.location.replace('/');
-                    console.log()
                 } else {
                     alert('Login attempt unsuccessful')
                 }
