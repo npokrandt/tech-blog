@@ -18,53 +18,85 @@ router.post('/add-blogpost', async (req, res) => {
         })
 
         res.status(201).json(newBlogpost)
-
-        res.end()
     } catch (err) {
         res.status(400).json(err);
     }
 })
 
 //for editing posts
-//router.put()
+router.put('/edit-blogpost', async (req, res) => {
+    const {oldTitle, title, content} = req.body
+    const user_id = req.session.user_id
+    let oldSlug = oldTitle.split(' ').join('-').toLowerCase()
+    let slug = title.split(' ').join('-').toLowerCase()
+    oldSlug = oldSlug + '-' + user_id
+    slug = slug + '-' + user_id
+    
+    console.log(title, content, slug, oldSlug)
+    
+    try {
+        const editedBlogpost = await Blogpost.update(
+            {
+                title,
+                slug,
+                content,
+            },
+            {
+            where: {
+                slug: oldSlug
+            },
+            raw: true
+            }
+        )
+    
+        res.status(200).json(editedBlogpost)
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
 
 router.delete('/delete-blogpost', async (req, res) => {
     const slug = req.body
 
-    const author_id = await User.findOne({
-        where: {
-            username: slug.slugPartTwo,
-        },
-        raw: true
-    })
+    try {
+        const author_id = await User.findOne({
+            where: {
+                username: slug.slugPartTwo,
+            },
+            raw: true
+        })
 
-    const fullslug = slug.slugPartOne + '-' + author_id.id
+        const fullslug = slug.slugPartOne + '-' + author_id.id
 
-    console.log(fullslug)
+        console.log(fullslug)
 
-    //get blog_id to delete the comments too
-    const post = await Blogpost.findOne({
-        where: {
-            slug: fullslug
-        },
-        raw: true
-    })
+        //get blog_id to delete the comments too
+        const post = await Blogpost.findOne({
+            where: {
+                slug: fullslug
+            },
+            raw: true
+        })
 
-    const blogpost_id = post.id
+        const blogpost_id = post.id
 
-    const deleteComments = Comment.destroy({
-        where: {
-            blogpost_id
-        }
-    })
+        const deleteComments = Comment.destroy({
+            where: {
+                blogpost_id
+            }
+        })
 
-    const deletePost = await Blogpost.destroy({
-        where: {
-            id: blogpost_id
-        }
-    })
+        const deletePost = await Blogpost.destroy({
+            where: {
+                id: blogpost_id
+            }
+        })
 
-    res.status(200).json({deletePost, deleteComments})
+        res.status(200).json({deletePost, deleteComments})
+    } catch (err) {
+        res.status(400).json(err);
+    }
 })
 
 module.exports = router
